@@ -1,9 +1,17 @@
 import java.util.ArrayList;
 
 public class GerenciadorFilmes {
+     private static GerenciadorFilmes INSTANCE;
      private ArrayList<Filme> filmesCadastrados;
 
-     public GerenciadorFilmes() {
+     public static GerenciadorFilmes getInstance() {
+          if (INSTANCE == null)
+               INSTANCE = new GerenciadorFilmes();
+
+          return INSTANCE;
+     }
+
+     private GerenciadorFilmes() {
           filmesCadastrados = new ArrayList<>();
      }
 
