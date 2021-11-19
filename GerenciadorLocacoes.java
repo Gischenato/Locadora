@@ -1,5 +1,7 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GerenciadorLocacoes {
      private static GerenciadorLocacoes INSTANCE;
@@ -39,6 +41,22 @@ public class GerenciadorLocacoes {
 
      public void solicitarDevolucao() {
 
+     }
+
+     public void filmesAssistidosPorCliente(String nomeDoCliente){
+          List<Locacao> locacoes = listaDeLocacoes.stream()
+                                                  .filter(l -> l.getCliente().getNome().equals(nomeDoCliente))
+                                                  .collect(Collectors.toList());
+
+          if(locacoes.isEmpty()) {
+               System.out.println(nomeDoCliente + " nao assistiu nenhum filme");
+               return;
+          }
+          System.out.println(nomeDoCliente + " assitiu ao(s) filme(s):");
+          locacoes.stream()
+                    .forEach(l ->{
+                         System.out.println(l.getFilme().getNome());
+                    });
      }
 
      @Override
