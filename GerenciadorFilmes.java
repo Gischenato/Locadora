@@ -15,6 +15,10 @@ public class GerenciadorFilmes {
           filmesCadastrados = new ArrayList<>();
      }
 
+     public void adicionarFilme(Filme filme) {
+          filmesCadastrados.add(filme);
+     }
+
      public Filme buscarFilme(int codigo) {
           for (Filme filme : filmesCadastrados) {
                if (filme.getCodigo() == codigo)

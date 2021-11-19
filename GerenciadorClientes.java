@@ -15,6 +15,10 @@ public class GerenciadorClientes {
           clientesCadastrados = new ArrayList<>();
      }
 
+     public void adicionarCliente(Cliente cliente) {
+          clientesCadastrados.add(cliente);
+     }
+
      public Cliente buscarCliente(int codigo) {
           for (Cliente cliente : clientesCadastrados) {
                if (cliente.getCodigo() == codigo)
