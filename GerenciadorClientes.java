@@ -18,7 +18,10 @@ public class GerenciadorClientes {
 
      @Override
      public String toString() {
-          //| FAZER O TOSTRING
-          return super.toString();
+          String res = "Clientes cadastrados:\n";
+          for (Cliente cliente : clientesCadastrados) {
+               res += cliente.toString() + "\n";
+          }
+          return res;
      }
 }
