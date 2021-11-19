@@ -5,7 +5,7 @@ public class Filme {
      private Categoria categoria;
 
      public enum Categoria {
-          Drama, Acao, Comedia, Romance
+          DRAMA, ACAO, COMEDIA, ROMANCE
      }
 
      public Filme(String nome, int codigo, Categoria categoria) {
@@ -27,7 +27,7 @@ public class Filme {
           return categoria;
      }
 
-     public boolean locado(){
+     public boolean locado() {
           return locado;
      }
 
@@ -37,6 +37,6 @@ public class Filme {
 
      @Override
      public String toString() {
-          return getCategoria() + ": " + getNome() + " - " + getCodigo(); 
+          return getCategoria() + ": " + getNome() + " - " + getCodigo();
      }
 }
