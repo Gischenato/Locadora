@@ -67,6 +67,22 @@ public class GerenciadorLocacoes {
 
           return total;
      }
+
+     public void clientesQueAssistiram(String nomeDoFilme){
+          List<Locacao>  locacoes = listaDeLocacoes.stream()
+                                                  .filter(l -> l.getFilme().getNome().equals(nomeDoFilme))
+                                                  .collect(Collectors.toList());
+          
+          if(locacoes.isEmpty()){
+               System.out.println("Ninguem assistiu ao filme " + nomeDoFilme);
+               return;
+          }
+          System.out.println(nomeDoFilme + " foi assistido por:");
+          locacoes.stream()
+                    .map(l -> l.getCliente().getNome())
+                    .sorted((n1, n2) -> n1.compareTo(n2))
+                    .forEach(System.out::println);
+     }
      
      @Override
      public String toString() {
