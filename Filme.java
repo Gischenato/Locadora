@@ -4,10 +4,6 @@ public class Filme {
      private boolean locado;
      private Categoria categoria;
 
-     public enum Categoria {
-          DRAMA, ACAO, COMEDIA, ROMANCE
-     }
-
      public Filme(String nome, int codigo, Categoria categoria) {
           this.nome = nome;
           this.codigo = codigo;
