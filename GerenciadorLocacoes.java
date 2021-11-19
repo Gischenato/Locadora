@@ -59,6 +59,15 @@ public class GerenciadorLocacoes {
                     });
      }
 
+     public int filmesAssistidosPorCategoria(Categoria categoria){
+          int total = 0;
+          total += listaDeLocacoes.stream()
+                                   .filter(l -> l.getFilme().getCategoria().equals(categoria))
+                                   .count();
+
+          return total;
+     }
+     
      @Override
      public String toString() {
           String res = "Locacoes cadastradas:\n";
