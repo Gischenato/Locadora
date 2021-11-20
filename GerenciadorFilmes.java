@@ -1,8 +1,10 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GerenciadorFilmes {
      private static GerenciadorFilmes INSTANCE;
-     private ArrayList<Filme> filmesCadastrados;
+     public ArrayList<Filme> filmesCadastrados;
+     private HashMap<Categoria, Integer> quantidadePorCategoria;
 
      public static GerenciadorFilmes getInstance() {
           if (INSTANCE == null)
@@ -13,6 +15,16 @@ public class GerenciadorFilmes {
 
      private GerenciadorFilmes() {
           filmesCadastrados = new ArrayList<>();
+          iniciaDicionario();
+          
+     }
+
+     private void iniciaDicionario(){
+          quantidadePorCategoria = new HashMap<>();
+          Categoria[] categorias = Categoria.values(); 
+          for (Categoria categoria : categorias) {
+               quantidadePorCategoria.put(categoria, 0);
+          }
      }
 
      public void adicionarFilme(Filme filme) {
@@ -25,6 +37,16 @@ public class GerenciadorFilmes {
                     return filme;
           }
           return null;
+     }
+
+     public void adicionarACategoria(Filme filme){
+          Categoria categoria = filme.getCategoria();
+          int quant = quantidadePorCategoria.get(categoria);
+          quantidadePorCategoria.put(categoria, quant + 1);
+     }
+
+     public HashMap<Categoria, Integer> getDicionario(){
+          return quantidadePorCategoria;
      }
 
      @Override
