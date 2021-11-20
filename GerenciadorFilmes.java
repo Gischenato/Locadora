@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class GerenciadorFilmes {
      private static GerenciadorFilmes INSTANCE;
@@ -47,6 +49,17 @@ public class GerenciadorFilmes {
 
      public HashMap<Categoria, Integer> getDicionario(){
           return quantidadePorCategoria;
+     }
+
+     public Set<Filme> filmesNaoLocados(){
+          Set<Filme> filmes = filmesCadastrados.stream()
+                                             .collect(Collectors.toSet());
+
+          filmes.removeAll(filmes.stream()
+                                 .filter(f -> f.locado())
+                                 .collect(Collectors.toSet()));
+
+          return filmes;
      }
 
      @Override

@@ -36,6 +36,8 @@ public class GerenciadorLocacoes {
           if (cliente == null)
                throw new IllegalArgumentException("Codigo de cliente Invalido");
 
+          filme.setStatus(true);
+          filmes.adicionarACategoria(filme);
           addLocacao(new Locacao(LocalDate.now(), cliente, filme));
      }
 
