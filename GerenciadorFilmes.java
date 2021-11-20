@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
@@ -60,6 +63,15 @@ public class GerenciadorFilmes {
                                  .collect(Collectors.toSet()));
 
           return filmes;
+     }
+
+     public void salvarFilmes() throws IOException{
+          File file = new File("filmes.csv");
+          FileWriter writer = new FileWriter(file);
+          for (Filme filme : filmesCadastrados) {
+               writer.write(filme.getCodigo() + ";" + filme.getNome() + ";" + filme.getCategoria() + "\n");
+          }
+          writer.close();
      }
 
      @Override
